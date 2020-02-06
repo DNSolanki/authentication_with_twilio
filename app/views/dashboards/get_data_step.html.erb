@@ -1,0 +1,14 @@
+<%= form_tag(verify_step_dashboards_path, method: :post) do -%>
+  <% if @response %>
+    <% @response.errors.each do |key, message| %>
+      <p><%= message %></p>
+    <% end %>
+  <% end %>
+  <div>
+    <%= label_tag "code", "Enter the code you were sent:" %>
+    <%= text_field_tag "code" %>
+  </div>
+  <%= button_tag "Verify" %>
+<% end -%>
+
+<%= link_to 'Back', dashboards_path %>

@@ -1,0 +1,23 @@
+<%= form_tag(initial_step_dashboards_path, method: :post) do -%>
+  <% if @response %>
+    <% @response.errors.each do |key, message| %>
+      <p><%= message %></p>
+    <% end %>
+  <% end %>
+  <div>
+    <%= label_tag "authy-countries", "Country code:" %>
+    <%= select_tag "authy-countries", nil, name: 'country_code', 'data-show-as': 'number' %>
+  </div>
+  <div>
+    <%= label_tag "phone_number", "Phone number:" %>
+    <%= telephone_field_tag "phone_number", nil, name: 'phone_number' %>
+  </div>
+  <div>
+    <p>Verification method</p>
+    <%= label_tag "method_sms", "SMS: " %>
+    <%= radio_button_tag "method", "sms" %>
+    <%= label_tag "method_call", "Call: " %>
+    <%= radio_button_tag "method", "call" %>
+  </div>
+  <%= button_tag "Verify" %>
+<% end %>
